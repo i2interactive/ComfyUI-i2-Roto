@@ -16,7 +16,7 @@ import numpy as np
 from . import plan as P
 from . import merge as M
 from .color import COLOR_MODES, COLOR_LOG, to_display, estimate_log_params
-from .io_utils import I2RotoError, clean_path, read_gray, write_png16_gray, write_matte, write_rgba16, get_cv2
+from .io_utils import I2RotoError, clean_path, resolve_input, read_gray, write_png16_gray, write_matte, write_rgba16, get_cv2
 from .plate import open_plate
 
 log = logging.getLogger("i2roto")
@@ -123,7 +123,7 @@ def setup(cfg_in, temp_dir, output_dir):
 
     run = RunState()
     run.cfg = cfg
-    run.plate_spec = clean_path(cfg["plate_path"])
+    run.plate_spec = resolve_input(cfg["plate_path"])
     plate = open_plate(run.plate_spec)
     run._plate = plate
     run.kind = plate.kind
@@ -161,7 +161,7 @@ def setup(cfg_in, temp_dir, output_dir):
         run.log_params = estimate_log_params(samples)
 
     # Garbage matte: validate now (fail early).
-    run.garbage_spec = clean_path(cfg["garbage_matte_path"])
+    run.garbage_spec = resolve_input(cfg["garbage_matte_path"])
     if run.garbage_spec:
         g = open_plate(run.garbage_spec)
         run.garbage_count = int(g.frame_count)

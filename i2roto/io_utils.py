@@ -51,6 +51,30 @@ def clean_path(p):
     return os.path.normpath(p)
 
 
+def resolve_input(p):
+    """clean_path, then: a relative path that isn't there as given is looked for in
+    ComfyUI's input folder (where the Creative Hub and the ComfyUI upload button put
+    files). Sequences with #### / %04d are checked by their folder."""
+    p = clean_path(p)
+    if not p or os.path.isabs(p):
+        return p
+    def there(q):
+        return os.path.exists(q) or (any(t in q for t in ("#", "%")) and os.path.isdir(os.path.dirname(q) or "."))
+    if there(p):
+        return p
+    try:
+        import folder_paths  # noqa: WPS433
+        base = folder_paths.get_input_directory()
+    except Exception:
+        return p
+    rel = p
+    for pre in ("input" + os.sep, "input/"):
+        if rel.lower().startswith(pre):
+            rel = rel[len(pre):]
+    cand = os.path.normpath(os.path.join(base, rel))
+    return cand if there(cand) else p
+
+
 # ----------------------------------------------------------------------------- image IO
 
 def _check_ext_supported(path, write=False):
