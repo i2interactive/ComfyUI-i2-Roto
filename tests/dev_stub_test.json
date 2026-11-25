@@ -1,0 +1,1996 @@
+{
+ "id": "cdd9a845-1ab1-5ea0-8e94-2b161a22f2ec",
+ "revision": 0,
+ "last_node_id": 29,
+ "last_link_id": 38,
+ "nodes": [
+  {
+   "id": 2,
+   "type": "I2RotoSetup",
+   "pos": [
+    0,
+    0
+   ],
+   "size": [
+    420,
+    700
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "localized_name": "run",
+     "name": "run",
+     "type": "I2ROTO_RUN",
+     "links": [
+      8,
+      17
+     ]
+    },
+    {
+     "localized_name": "proxy_jobs",
+     "name": "proxy_jobs",
+     "type": "INT",
+     "links": [
+      7
+     ]
+    },
+    {
+     "localized_name": "blank_pin",
+     "name": "blank_pin",
+     "type": "IMAGE",
+     "links": [
+      6,
+      20
+     ]
+    },
+    {
+     "localized_name": "first_frame",
+     "name": "first_frame",
+     "type": "IMAGE",
+     "links": [
+      4
+     ]
+    },
+    {
+     "localized_name": "info",
+     "name": "info",
+     "type": "STRING",
+     "links": [
+      5
+     ]
+    }
+   ],
+   "title": "i2 Roto \u00b7 Setup",
+   "properties": {
+    "Node name for S&R": "I2RotoSetup"
+   },
+   "widgets_values": [
+    "",
+    0,
+    0,
+    "rec709 / sRGB (use as is)",
+    "1920x1088 (model native, best)",
+    49,
+    "native (max quality)",
+    256,
+    48,
+    1.0,
+    true,
+    0.005,
+    0.995,
+    false,
+    0.0,
+    true,
+    "",
+    "",
+    "PNG 16-bit",
+    false,
+    1001,
+    false
+   ],
+   "widgets_values_named": {
+    "plate_path": "",
+    "start_frame": 0,
+    "frame_count": 0,
+    "plate_color": "rec709 / sRGB (use as is)",
+    "window": "1920x1088 (model native, best)",
+    "chunk_frames": 49,
+    "detail": "native (max quality)",
+    "tile_overlap": 256,
+    "band_px": 48,
+    "tile_trust": 1.0,
+    "pin_chunks": true,
+    "black_clip": 0.005,
+    "white_clip": 0.995,
+    "invert": false,
+    "edge_shift_px": 0.0,
+    "guided_upscale": true,
+    "garbage_matte_path": "",
+    "output_folder": "",
+    "output_format": "PNG 16-bit",
+    "write_rgba": false,
+    "start_number": 1001,
+    "keep_cache": false
+   },
+   "color": "#223",
+   "bgcolor": "#335"
+  },
+  {
+   "id": 3,
+   "type": "MarkdownNote",
+   "pos": [
+    0,
+    760
+   ],
+   "size": [
+    420,
+    300
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "title": "Help",
+   "properties": {
+    "Node name for S&R": "MarkdownNote"
+   },
+   "widgets_values": [
+    "## 1 \u00b7 Plate + settings\n\nPaste the plate path into **i2 Roto \u00b7 Setup** (video file, frame folder, or `shot.####.exr`). Every setting lives on this node.\n\n- **window**: 1280x704 for 8 GB cards, 1920x1088 is the model's native size.\n- **detail**: `native` = sharp native-res edges (slowest), `proxy only` = one pass.\n- Check the info box and the first-frame preview before a long run."
+   ],
+   "widgets_values_named": {
+    "text": "## 1 \u00b7 Plate + settings\n\nPaste the plate path into **i2 Roto \u00b7 Setup** (video file, frame folder, or `shot.####.exr`). Every setting lives on this node.\n\n- **window**: 1280x704 for 8 GB cards, 1920x1088 is the model's native size.\n- **detail**: `native` = sharp native-res edges (slowest), `proxy only` = one pass.\n- Check the info box and the first-frame preview before a long run."
+   }
+  },
+  {
+   "id": 4,
+   "type": "PreviewImage",
+   "pos": [
+    480,
+    0
+   ],
+   "size": [
+    420,
+    340
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 4
+    }
+   ],
+   "outputs": [],
+   "title": "First frame (display space)",
+   "properties": {
+    "Node name for S&R": "PreviewImage"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 5,
+   "type": "PreviewAny",
+   "pos": [
+    480,
+    400
+   ],
+   "size": [
+    420,
+    300
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "source",
+     "name": "source",
+     "type": "*",
+     "link": 5
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "STRING",
+     "name": "STRING",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "title": "Setup info",
+   "properties": {
+    "Node name for S&R": "PreviewAny"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 6,
+   "type": "StartLoop",
+   "pos": [
+    1000,
+    0
+   ],
+   "size": [
+    300,
+    220
+   ],
+   "flags": {},
+   "order": 7,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "parent_iteration",
+     "name": "parent_iteration",
+     "type": "INT",
+     "shape": 7,
+     "link": null
+    },
+    {
+     "localized_name": "initial_iteration_value",
+     "name": "initial_iteration_value",
+     "type": "*",
+     "shape": 7,
+     "link": 6
+    },
+    {
+     "localized_name": "max_iteration",
+     "name": "mode.max_iteration",
+     "type": "INT",
+     "widget": {
+      "name": "mode.max_iteration"
+     },
+     "link": 7
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "iteration_index",
+     "name": "iteration_index",
+     "type": "INT",
+     "links": [
+      9
+     ]
+    },
+    {
+     "localized_name": "is_first",
+     "name": "is_first",
+     "type": "BOOLEAN",
+     "links": []
+    },
+    {
+     "localized_name": "is_last",
+     "name": "is_last",
+     "type": "BOOLEAN",
+     "links": []
+    },
+    {
+     "localized_name": "list_item",
+     "name": "list_item",
+     "type": "*",
+     "links": []
+    },
+    {
+     "localized_name": "current_iteration_value",
+     "name": "current_iteration_value",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "title": "Loop start: proxy jobs",
+   "properties": {
+    "Node name for S&R": "StartLoop"
+   },
+   "widgets_values": [
+    "For",
+    0,
+    1,
+    1,
+    false
+   ],
+   "widgets_values_named": {
+    "mode": "For",
+    "mode.start_iteration_index": 0,
+    "mode.max_iteration": 1,
+    "mode.step": 1,
+    "cache_iterations": false
+   },
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 7,
+   "type": "I2RotoLoadJob",
+   "pos": [
+    1360,
+    0
+   ],
+   "size": [
+    300,
+    180
+   ],
+   "flags": {},
+   "order": 8,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "run",
+     "name": "run",
+     "type": "I2ROTO_RUN",
+     "link": 8
+    },
+    {
+     "localized_name": "job_index",
+     "name": "job_index",
+     "type": "INT",
+     "link": 9
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "links": [
+      10
+     ]
+    },
+    {
+     "localized_name": "width",
+     "name": "width",
+     "type": "INT",
+     "links": []
+    },
+    {
+     "localized_name": "height",
+     "name": "height",
+     "type": "INT",
+     "links": []
+    },
+    {
+     "localized_name": "length",
+     "name": "length",
+     "type": "INT",
+     "links": []
+    },
+    {
+     "localized_name": "is_first_chunk",
+     "name": "is_first_chunk",
+     "type": "BOOLEAN",
+     "links": []
+    },
+    {
+     "localized_name": "job",
+     "name": "job",
+     "type": "I2ROTO_JOB",
+     "links": [
+      11,
+      12
+     ]
+    }
+   ],
+   "title": "i2 Roto \u00b7 Load Job (proxy)",
+   "properties": {
+    "Node name for S&R": "I2RotoLoadJob"
+   },
+   "widgets_values": [
+    "proxy"
+   ],
+   "widgets_values_named": {
+    "stage": "proxy"
+   },
+   "color": "#232",
+   "bgcolor": "#353"
+  },
+  {
+   "id": 8,
+   "type": "3f5067dc-b3db-5d3b-980c-c5c2ecd5d110",
+   "pos": [
+    1720,
+    0
+   ],
+   "size": [
+    320,
+    380
+   ],
+   "flags": {},
+   "order": 9,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 10
+    },
+    {
+     "name": "job",
+     "type": "I2ROTO_JOB",
+     "link": 11
+    }
+   ],
+   "outputs": [
+    {
+     "name": "matte",
+     "type": "IMAGE",
+     "links": [
+      13
+     ]
+    }
+   ],
+   "title": "Matte one job (proxy)",
+   "properties": {},
+   "widgets_values": []
+  },
+  {
+   "id": 9,
+   "type": "I2RotoStoreJob",
+   "pos": [
+    2100,
+    0
+   ],
+   "size": [
+    280,
+    100
+   ],
+   "flags": {},
+   "order": 10,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "job",
+     "name": "job",
+     "type": "I2ROTO_JOB",
+     "link": 12
+    },
+    {
+     "localized_name": "matte",
+     "name": "matte",
+     "type": "IMAGE",
+     "link": 13
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "next_pin",
+     "name": "next_pin",
+     "type": "IMAGE",
+     "links": [
+      14
+     ]
+    },
+    {
+     "localized_name": "done",
+     "name": "done",
+     "type": "I2ROTO_RUN",
+     "links": [
+      15
+     ]
+    }
+   ],
+   "title": "i2 Roto \u00b7 Store Job (proxy)",
+   "properties": {
+    "Node name for S&R": "I2RotoStoreJob"
+   },
+   "widgets_values": [],
+   "color": "#232",
+   "bgcolor": "#353"
+  },
+  {
+   "id": 10,
+   "type": "LTXVPreprocess",
+   "pos": [
+    2100,
+    160
+   ],
+   "size": [
+    280,
+    80
+   ],
+   "flags": {},
+   "order": 11,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "image",
+     "name": "image",
+     "type": "IMAGE",
+     "link": 14
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "output_image",
+     "name": "output_image",
+     "type": "IMAGE",
+     "links": [
+      16
+     ]
+    }
+   ],
+   "title": "Next pin (CRF 18)",
+   "properties": {
+    "Node name for S&R": "LTXVPreprocess"
+   },
+   "widgets_values": [
+    18
+   ],
+   "widgets_values_named": {
+    "img_compression": 18
+   }
+  },
+  {
+   "id": 11,
+   "type": "EndLoop",
+   "pos": [
+    2440,
+    0
+   ],
+   "size": [
+    280,
+    140
+   ],
+   "flags": {},
+   "order": 12,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "output_value",
+     "name": "output_value",
+     "type": "*",
+     "shape": 7,
+     "link": 15
+    },
+    {
+     "localized_name": "next_iteration_value",
+     "name": "next_iteration_value",
+     "type": "*",
+     "shape": 7,
+     "link": 16
+    },
+    {
+     "localized_name": "termination0",
+     "name": "terminations.termination0",
+     "type": "*",
+     "shape": 7,
+     "label": "termination0",
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "outputs",
+     "name": "outputs",
+     "type": "I2ROTO_RUN",
+     "links": [
+      18
+     ],
+     "shape": 6
+    }
+   ],
+   "title": "Loop end: proxy",
+   "properties": {
+    "Node name for S&R": "EndLoop"
+   },
+   "widgets_values": [
+    false
+   ],
+   "widgets_values_named": {
+    "accumulate": false
+   },
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 12,
+   "type": "MarkdownNote",
+   "pos": [
+    1000,
+    440
+   ],
+   "size": [
+    700,
+    220
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "title": "Help",
+   "properties": {
+    "Node name for S&R": "MarkdownNote"
+   },
+   "widgets_values": [
+    "## 3 \u00b7 Proxy pass\n\nThe whole frame, scaled to fit the window, one chunk per loop iteration. Chunks share one frame; the last matte frame of a chunk is pinned as frame 0 of the next.\n\nMattes go to a cache on disk, not into RAM."
+   ],
+   "widgets_values_named": {
+    "text": "## 3 \u00b7 Proxy pass\n\nThe whole frame, scaled to fit the window, one chunk per loop iteration. Chunks share one frame; the last matte frame of a chunk is pinned as frame 0 of the next.\n\nMattes go to a cache on disk, not into RAM."
+   }
+  },
+  {
+   "id": 13,
+   "type": "I2RotoPlanDetail",
+   "pos": [
+    1000,
+    800
+   ],
+   "size": [
+    300,
+    100
+   ],
+   "flags": {},
+   "order": 13,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "run",
+     "name": "run",
+     "type": "I2ROTO_RUN",
+     "link": 17
+    },
+    {
+     "localized_name": "proxy_done",
+     "name": "proxy_done",
+     "type": "*",
+     "link": 18
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "run",
+     "name": "run",
+     "type": "I2ROTO_RUN",
+     "links": [
+      22,
+      31
+     ]
+    },
+    {
+     "localized_name": "detail_jobs",
+     "name": "detail_jobs",
+     "type": "INT",
+     "links": [
+      21
+     ]
+    },
+    {
+     "localized_name": "info",
+     "name": "info",
+     "type": "STRING",
+     "links": [
+      19
+     ]
+    }
+   ],
+   "title": "i2 Roto \u00b7 Plan Detail Pass",
+   "properties": {
+    "Node name for S&R": "I2RotoPlanDetail"
+   },
+   "widgets_values": [],
+   "color": "#232",
+   "bgcolor": "#353"
+  },
+  {
+   "id": 14,
+   "type": "PreviewAny",
+   "pos": [
+    1000,
+    960
+   ],
+   "size": [
+    300,
+    240
+   ],
+   "flags": {},
+   "order": 14,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "source",
+     "name": "source",
+     "type": "*",
+     "link": 19
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "STRING",
+     "name": "STRING",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "title": "Detail plan",
+   "properties": {
+    "Node name for S&R": "PreviewAny"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 15,
+   "type": "StartLoop",
+   "pos": [
+    1360,
+    800
+   ],
+   "size": [
+    300,
+    220
+   ],
+   "flags": {},
+   "order": 15,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "parent_iteration",
+     "name": "parent_iteration",
+     "type": "INT",
+     "shape": 7,
+     "link": null
+    },
+    {
+     "localized_name": "initial_iteration_value",
+     "name": "initial_iteration_value",
+     "type": "*",
+     "shape": 7,
+     "link": 20
+    },
+    {
+     "localized_name": "max_iteration",
+     "name": "mode.max_iteration",
+     "type": "INT",
+     "widget": {
+      "name": "mode.max_iteration"
+     },
+     "link": 21
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "iteration_index",
+     "name": "iteration_index",
+     "type": "INT",
+     "links": [
+      23
+     ]
+    },
+    {
+     "localized_name": "is_first",
+     "name": "is_first",
+     "type": "BOOLEAN",
+     "links": []
+    },
+    {
+     "localized_name": "is_last",
+     "name": "is_last",
+     "type": "BOOLEAN",
+     "links": []
+    },
+    {
+     "localized_name": "list_item",
+     "name": "list_item",
+     "type": "*",
+     "links": []
+    },
+    {
+     "localized_name": "current_iteration_value",
+     "name": "current_iteration_value",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "title": "Loop start: detail jobs",
+   "properties": {
+    "Node name for S&R": "StartLoop"
+   },
+   "widgets_values": [
+    "For",
+    0,
+    1,
+    1,
+    false
+   ],
+   "widgets_values_named": {
+    "mode": "For",
+    "mode.start_iteration_index": 0,
+    "mode.max_iteration": 1,
+    "mode.step": 1,
+    "cache_iterations": false
+   },
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 16,
+   "type": "I2RotoLoadJob",
+   "pos": [
+    1720,
+    800
+   ],
+   "size": [
+    300,
+    180
+   ],
+   "flags": {},
+   "order": 16,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "run",
+     "name": "run",
+     "type": "I2ROTO_RUN",
+     "link": 22
+    },
+    {
+     "localized_name": "job_index",
+     "name": "job_index",
+     "type": "INT",
+     "link": 23
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "links": [
+      24
+     ]
+    },
+    {
+     "localized_name": "width",
+     "name": "width",
+     "type": "INT",
+     "links": []
+    },
+    {
+     "localized_name": "height",
+     "name": "height",
+     "type": "INT",
+     "links": []
+    },
+    {
+     "localized_name": "length",
+     "name": "length",
+     "type": "INT",
+     "links": []
+    },
+    {
+     "localized_name": "is_first_chunk",
+     "name": "is_first_chunk",
+     "type": "BOOLEAN",
+     "links": []
+    },
+    {
+     "localized_name": "job",
+     "name": "job",
+     "type": "I2ROTO_JOB",
+     "links": [
+      25,
+      26
+     ]
+    }
+   ],
+   "title": "i2 Roto \u00b7 Load Job (detail)",
+   "properties": {
+    "Node name for S&R": "I2RotoLoadJob"
+   },
+   "widgets_values": [
+    "detail"
+   ],
+   "widgets_values_named": {
+    "stage": "detail"
+   },
+   "color": "#232",
+   "bgcolor": "#353"
+  },
+  {
+   "id": 17,
+   "type": "3f5067dc-b3db-5d3b-980c-c5c2ecd5d110",
+   "pos": [
+    2080,
+    800
+   ],
+   "size": [
+    320,
+    380
+   ],
+   "flags": {},
+   "order": 17,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 24
+    },
+    {
+     "name": "job",
+     "type": "I2ROTO_JOB",
+     "link": 25
+    }
+   ],
+   "outputs": [
+    {
+     "name": "matte",
+     "type": "IMAGE",
+     "links": [
+      27
+     ]
+    }
+   ],
+   "title": "Matte one job (detail)",
+   "properties": {},
+   "widgets_values": []
+  },
+  {
+   "id": 18,
+   "type": "I2RotoStoreJob",
+   "pos": [
+    2460,
+    800
+   ],
+   "size": [
+    280,
+    100
+   ],
+   "flags": {},
+   "order": 18,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "job",
+     "name": "job",
+     "type": "I2ROTO_JOB",
+     "link": 26
+    },
+    {
+     "localized_name": "matte",
+     "name": "matte",
+     "type": "IMAGE",
+     "link": 27
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "next_pin",
+     "name": "next_pin",
+     "type": "IMAGE",
+     "links": [
+      28
+     ]
+    },
+    {
+     "localized_name": "done",
+     "name": "done",
+     "type": "I2ROTO_RUN",
+     "links": [
+      29
+     ]
+    }
+   ],
+   "title": "i2 Roto \u00b7 Store Job (detail)",
+   "properties": {
+    "Node name for S&R": "I2RotoStoreJob"
+   },
+   "widgets_values": [],
+   "color": "#232",
+   "bgcolor": "#353"
+  },
+  {
+   "id": 19,
+   "type": "LTXVPreprocess",
+   "pos": [
+    2460,
+    960
+   ],
+   "size": [
+    280,
+    80
+   ],
+   "flags": {},
+   "order": 19,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "image",
+     "name": "image",
+     "type": "IMAGE",
+     "link": 28
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "output_image",
+     "name": "output_image",
+     "type": "IMAGE",
+     "links": [
+      30
+     ]
+    }
+   ],
+   "title": "Next pin (CRF 18)",
+   "properties": {
+    "Node name for S&R": "LTXVPreprocess"
+   },
+   "widgets_values": [
+    18
+   ],
+   "widgets_values_named": {
+    "img_compression": 18
+   }
+  },
+  {
+   "id": 20,
+   "type": "EndLoop",
+   "pos": [
+    2800,
+    800
+   ],
+   "size": [
+    280,
+    140
+   ],
+   "flags": {},
+   "order": 20,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "output_value",
+     "name": "output_value",
+     "type": "*",
+     "shape": 7,
+     "link": 29
+    },
+    {
+     "localized_name": "next_iteration_value",
+     "name": "next_iteration_value",
+     "type": "*",
+     "shape": 7,
+     "link": 30
+    },
+    {
+     "localized_name": "termination0",
+     "name": "terminations.termination0",
+     "type": "*",
+     "shape": 7,
+     "label": "termination0",
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "outputs",
+     "name": "outputs",
+     "type": "I2ROTO_RUN",
+     "links": [
+      32
+     ],
+     "shape": 6
+    }
+   ],
+   "title": "Loop end: detail",
+   "properties": {
+    "Node name for S&R": "EndLoop"
+   },
+   "widgets_values": [
+    false
+   ],
+   "widgets_values_named": {
+    "accumulate": false
+   },
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 21,
+   "type": "MarkdownNote",
+   "pos": [
+    1360,
+    1240
+   ],
+   "size": [
+    700,
+    220
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "title": "Help",
+   "properties": {
+    "Node name for S&R": "MarkdownNote"
+   },
+   "widgets_values": [
+    "## 4 \u00b7 Detail pass\n\nPlans window-size tiles along the matte's edge band at native (or 2x proxy) resolution and runs only the tile x chunk jobs the edge actually touches.\n\nZero jobs is normal for `proxy only` or plates that already fit the window."
+   ],
+   "widgets_values_named": {
+    "text": "## 4 \u00b7 Detail pass\n\nPlans window-size tiles along the matte's edge band at native (or 2x proxy) resolution and runs only the tile x chunk jobs the edge actually touches.\n\nZero jobs is normal for `proxy only` or plates that already fit the window."
+   }
+  },
+  {
+   "id": 22,
+   "type": "I2RotoAssemble",
+   "pos": [
+    3200,
+    0
+   ],
+   "size": [
+    320,
+    140
+   ],
+   "flags": {},
+   "order": 21,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "run",
+     "name": "run",
+     "type": "I2ROTO_RUN",
+     "link": 31
+    },
+    {
+     "localized_name": "detail_done",
+     "name": "detail_done",
+     "type": "*",
+     "link": 32
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "matte_preview",
+     "name": "matte_preview",
+     "type": "IMAGE",
+     "links": [
+      33
+     ]
+    },
+    {
+     "localized_name": "comp_preview",
+     "name": "comp_preview",
+     "type": "IMAGE",
+     "links": [
+      35
+     ]
+    },
+    {
+     "localized_name": "output_folder",
+     "name": "output_folder",
+     "type": "STRING",
+     "links": [
+      38
+     ]
+    },
+    {
+     "localized_name": "report",
+     "name": "report",
+     "type": "STRING",
+     "links": [
+      37
+     ]
+    }
+   ],
+   "title": "i2 Roto \u00b7 Assemble + Write",
+   "properties": {
+    "Node name for S&R": "I2RotoAssemble"
+   },
+   "widgets_values": [],
+   "color": "#223",
+   "bgcolor": "#335"
+  },
+  {
+   "id": 23,
+   "type": "CreateVideo",
+   "pos": [
+    3580,
+    0
+   ],
+   "size": [
+    300,
+    180
+   ],
+   "flags": {},
+   "order": 22,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 33
+    },
+    {
+     "localized_name": "audio",
+     "name": "audio",
+     "type": "AUDIO",
+     "shape": 7,
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "VIDEO",
+     "name": "VIDEO",
+     "type": "VIDEO",
+     "links": [
+      34
+     ]
+    }
+   ],
+   "title": "QC video: matte_preview",
+   "properties": {
+    "Node name for S&R": "CreateVideo"
+   },
+   "widgets_values": [
+    24,
+    "auto",
+    "sRGB",
+    "auto",
+    "none"
+   ],
+   "widgets_values_named": {
+    "fps": 24,
+    "bit_depth": "auto",
+    "color_space": "sRGB",
+    "chroma_subsampling": "auto",
+    "codec": "none"
+   }
+  },
+  {
+   "id": 24,
+   "type": "SaveVideo",
+   "pos": [
+    3940,
+    0
+   ],
+   "size": [
+    360,
+    380
+   ],
+   "flags": {},
+   "order": 26,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "video",
+     "name": "video",
+     "type": "VIDEO",
+     "link": 34
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "video",
+     "name": "video",
+     "type": "VIDEO",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SaveVideo"
+   },
+   "widgets_values": [
+    "i2roto/qc_matte",
+    "auto",
+    "auto",
+    "auto"
+   ],
+   "widgets_values_named": {
+    "filename_prefix": "i2roto/qc_matte",
+    "format": "auto",
+    "format.codec": "auto",
+    "codec": "auto"
+   }
+  },
+  {
+   "id": 25,
+   "type": "CreateVideo",
+   "pos": [
+    3580,
+    420
+   ],
+   "size": [
+    300,
+    180
+   ],
+   "flags": {},
+   "order": 23,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 35
+    },
+    {
+     "localized_name": "audio",
+     "name": "audio",
+     "type": "AUDIO",
+     "shape": 7,
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "VIDEO",
+     "name": "VIDEO",
+     "type": "VIDEO",
+     "links": [
+      36
+     ]
+    }
+   ],
+   "title": "QC video: comp_preview",
+   "properties": {
+    "Node name for S&R": "CreateVideo"
+   },
+   "widgets_values": [
+    24,
+    "auto",
+    "sRGB",
+    "auto",
+    "none"
+   ],
+   "widgets_values_named": {
+    "fps": 24,
+    "bit_depth": "auto",
+    "color_space": "sRGB",
+    "chroma_subsampling": "auto",
+    "codec": "none"
+   }
+  },
+  {
+   "id": 26,
+   "type": "SaveVideo",
+   "pos": [
+    3940,
+    420
+   ],
+   "size": [
+    360,
+    380
+   ],
+   "flags": {},
+   "order": 27,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "video",
+     "name": "video",
+     "type": "VIDEO",
+     "link": 36
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "video",
+     "name": "video",
+     "type": "VIDEO",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SaveVideo"
+   },
+   "widgets_values": [
+    "i2roto/qc_comp",
+    "auto",
+    "auto",
+    "auto"
+   ],
+   "widgets_values_named": {
+    "filename_prefix": "i2roto/qc_comp",
+    "format": "auto",
+    "format.codec": "auto",
+    "codec": "auto"
+   }
+  },
+  {
+   "id": 27,
+   "type": "PreviewAny",
+   "pos": [
+    3200,
+    200
+   ],
+   "size": [
+    320,
+    300
+   ],
+   "flags": {},
+   "order": 24,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "source",
+     "name": "source",
+     "type": "*",
+     "link": 37
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "STRING",
+     "name": "STRING",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "title": "Report",
+   "properties": {
+    "Node name for S&R": "PreviewAny"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 28,
+   "type": "PreviewAny",
+   "pos": [
+    3200,
+    560
+   ],
+   "size": [
+    320,
+    120
+   ],
+   "flags": {},
+   "order": 25,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "source",
+     "name": "source",
+     "type": "*",
+     "link": 38
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "STRING",
+     "name": "STRING",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "title": "Output folder",
+   "properties": {
+    "Node name for S&R": "PreviewAny"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 29,
+   "type": "MarkdownNote",
+   "pos": [
+    3200,
+    740
+   ],
+   "size": [
+    680,
+    200
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "title": "Help",
+   "properties": {
+    "Node name for S&R": "MarkdownNote"
+   },
+   "widgets_values": [
+    "## 5 \u00b7 Output\n\nBlends the tiles into the upscaled proxy inside the edge band and writes the matte sequence at the plate's native resolution, one frame at a time.\n\nThe two videos are small QC previews (matte, and plate over a checker)."
+   ],
+   "widgets_values_named": {
+    "text": "## 5 \u00b7 Output\n\nBlends the tiles into the upscaled proxy inside the edge band and writes the matte sequence at the plate's native resolution, one frame at a time.\n\nThe two videos are small QC previews (matte, and plate over a checker)."
+   }
+  }
+ ],
+ "links": [
+  [
+   4,
+   2,
+   3,
+   4,
+   0,
+   "IMAGE"
+  ],
+  [
+   5,
+   2,
+   4,
+   5,
+   0,
+   "STRING"
+  ],
+  [
+   6,
+   2,
+   2,
+   6,
+   1,
+   "IMAGE"
+  ],
+  [
+   7,
+   2,
+   1,
+   6,
+   2,
+   "INT"
+  ],
+  [
+   8,
+   2,
+   0,
+   7,
+   0,
+   "I2ROTO_RUN"
+  ],
+  [
+   9,
+   6,
+   0,
+   7,
+   1,
+   "INT"
+  ],
+  [
+   10,
+   7,
+   0,
+   8,
+   0,
+   "IMAGE"
+  ],
+  [
+   11,
+   7,
+   5,
+   8,
+   1,
+   "I2ROTO_JOB"
+  ],
+  [
+   12,
+   7,
+   5,
+   9,
+   0,
+   "I2ROTO_JOB"
+  ],
+  [
+   13,
+   8,
+   0,
+   9,
+   1,
+   "IMAGE"
+  ],
+  [
+   14,
+   9,
+   0,
+   10,
+   0,
+   "IMAGE"
+  ],
+  [
+   15,
+   9,
+   1,
+   11,
+   0,
+   "*"
+  ],
+  [
+   16,
+   10,
+   0,
+   11,
+   1,
+   "*"
+  ],
+  [
+   17,
+   2,
+   0,
+   13,
+   0,
+   "I2ROTO_RUN"
+  ],
+  [
+   18,
+   11,
+   0,
+   13,
+   1,
+   "*"
+  ],
+  [
+   19,
+   13,
+   2,
+   14,
+   0,
+   "STRING"
+  ],
+  [
+   20,
+   2,
+   2,
+   15,
+   1,
+   "IMAGE"
+  ],
+  [
+   21,
+   13,
+   1,
+   15,
+   2,
+   "INT"
+  ],
+  [
+   22,
+   13,
+   0,
+   16,
+   0,
+   "I2ROTO_RUN"
+  ],
+  [
+   23,
+   15,
+   0,
+   16,
+   1,
+   "INT"
+  ],
+  [
+   24,
+   16,
+   0,
+   17,
+   0,
+   "IMAGE"
+  ],
+  [
+   25,
+   16,
+   5,
+   17,
+   1,
+   "I2ROTO_JOB"
+  ],
+  [
+   26,
+   16,
+   5,
+   18,
+   0,
+   "I2ROTO_JOB"
+  ],
+  [
+   27,
+   17,
+   0,
+   18,
+   1,
+   "IMAGE"
+  ],
+  [
+   28,
+   18,
+   0,
+   19,
+   0,
+   "IMAGE"
+  ],
+  [
+   29,
+   18,
+   1,
+   20,
+   0,
+   "*"
+  ],
+  [
+   30,
+   19,
+   0,
+   20,
+   1,
+   "*"
+  ],
+  [
+   31,
+   13,
+   0,
+   22,
+   0,
+   "I2ROTO_RUN"
+  ],
+  [
+   32,
+   20,
+   0,
+   22,
+   1,
+   "*"
+  ],
+  [
+   33,
+   22,
+   0,
+   23,
+   0,
+   "IMAGE"
+  ],
+  [
+   34,
+   23,
+   0,
+   24,
+   0,
+   "VIDEO"
+  ],
+  [
+   35,
+   22,
+   1,
+   25,
+   0,
+   "IMAGE"
+  ],
+  [
+   36,
+   25,
+   0,
+   26,
+   0,
+   "VIDEO"
+  ],
+  [
+   37,
+   22,
+   3,
+   27,
+   0,
+   "STRING"
+  ],
+  [
+   38,
+   22,
+   2,
+   28,
+   0,
+   "STRING"
+  ]
+ ],
+ "groups": [
+  {
+   "id": 1,
+   "title": "1 \u00b7 Plate + settings",
+   "bounding": [
+    -40,
+    -80,
+    980,
+    1180
+   ],
+   "color": "#3f789e",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 2,
+   "title": "3 \u00b7 Proxy pass",
+   "bounding": [
+    960,
+    -80,
+    1800,
+    780
+   ],
+   "color": "#4a7a4a",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 3,
+   "title": "4 \u00b7 Detail pass",
+   "bounding": [
+    960,
+    720,
+    2160,
+    780
+   ],
+   "color": "#6b5b95",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 4,
+   "title": "5 \u00b7 Output",
+   "bounding": [
+    3160,
+    -80,
+    1180,
+    1060
+   ],
+   "color": "#8a7a3a",
+   "font_size": 24,
+   "flags": {}
+  }
+ ],
+ "definitions": {
+  "subgraphs": [
+   {
+    "id": "3f5067dc-b3db-5d3b-980c-c5c2ecd5d110",
+    "version": 1,
+    "state": {
+     "lastGroupId": 4,
+     "lastNodeId": 29,
+     "lastLinkId": 38,
+     "lastRerouteId": 0
+    },
+    "revision": 0,
+    "config": {},
+    "name": "Matte one job (STUB, dev test only)",
+    "inputNode": {
+     "id": -10,
+     "bounding": [
+      -300,
+      0,
+      160,
+      80
+     ]
+    },
+    "outputNode": {
+     "id": -20,
+     "bounding": [
+      440,
+      0,
+      160,
+      60
+     ]
+    },
+    "inputs": [
+     {
+      "id": "643fb272-50cb-55b6-88d8-480c09543266",
+      "name": "images",
+      "type": "IMAGE",
+      "linkIds": [
+       1
+      ],
+      "localized_name": "images",
+      "pos": [
+       0,
+       0
+      ]
+     },
+     {
+      "id": "0b094389-c070-56d0-9a0b-fd1fd9050c49",
+      "name": "job",
+      "type": "I2ROTO_JOB",
+      "linkIds": [
+       2
+      ],
+      "localized_name": "job",
+      "pos": [
+       0,
+       0
+      ]
+     }
+    ],
+    "outputs": [
+     {
+      "id": "086d834e-1e7a-55c7-b8b5-46c82a7c8fd7",
+      "name": "matte",
+      "type": "IMAGE",
+      "linkIds": [
+       3
+      ],
+      "localized_name": "matte",
+      "pos": [
+       0,
+       0
+      ]
+     }
+    ],
+    "widgets": [],
+    "nodes": [
+     {
+      "id": 1,
+      "type": "I2RotoStubMatte",
+      "pos": [
+       0,
+       0
+      ],
+      "size": [
+       300,
+       80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+       {
+        "localized_name": "images",
+        "name": "images",
+        "type": "IMAGE",
+        "link": 1
+       },
+       {
+        "localized_name": "job",
+        "name": "job",
+        "type": "I2ROTO_JOB",
+        "link": 2
+       }
+      ],
+      "outputs": [
+       {
+        "localized_name": "matte",
+        "name": "matte",
+        "type": "IMAGE",
+        "links": [
+         3
+        ]
+       }
+      ],
+      "title": "Stub matte (ground truth, no model)",
+      "properties": {
+       "Node name for S&R": "I2RotoStubMatte"
+      },
+      "widgets_values": []
+     }
+    ],
+    "groups": [],
+    "links": [
+     {
+      "id": 1,
+      "origin_id": -10,
+      "origin_slot": 0,
+      "target_id": 1,
+      "target_slot": 0,
+      "type": "IMAGE"
+     },
+     {
+      "id": 2,
+      "origin_id": -10,
+      "origin_slot": 1,
+      "target_id": 1,
+      "target_slot": 1,
+      "type": "I2ROTO_JOB"
+     },
+     {
+      "id": 3,
+      "origin_id": 1,
+      "origin_slot": 0,
+      "target_id": -20,
+      "target_slot": 0,
+      "type": "IMAGE"
+     }
+    ],
+    "extra": {}
+   }
+  ]
+ },
+ "config": {},
+ "extra": {
+  "ds": {
+   "scale": 0.55,
+   "offset": [
+    80,
+    120
+   ]
+  }
+ },
+ "version": 0.4
+}
